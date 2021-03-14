@@ -1,5 +1,7 @@
 # README
 
+Inventory Tracker is a neat and simple way to keep track of your store's inventory. 
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
