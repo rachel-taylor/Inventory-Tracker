@@ -7,10 +7,20 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-5.times do 
-    Department.create(name: Faker::Commerce.department(max: 2, fixed_amount: true))
+# 5.times do 
+#     Department.create(name: Faker::Commerce.department(max: 2, fixed_amount: true))
+# end 
+
+# 5.times do 
+#     Product.create(name: Faker::Coffee.blend_name, itemdetails: Faker::TvShows::Simpsons.quote, price: Faker::Commerce.price)
+# end 
+
+departments = ['Housewares', 'Electronics', 'Lawn and Garden', 'Grocery']
+
+departments.each do |d|
+    Department.create(name: d)
 end 
 
-5.times do 
-    Product.create(name: Faker::Coffee.blend_name, itemdetails: Faker::TvShows::Simpsons.quote, price: Faker::Commerce.price)
+Product.all.each do |p|
+    p.update(department: Department.all.sample(1)[0])
 end 
