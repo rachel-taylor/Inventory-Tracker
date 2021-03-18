@@ -20,7 +20,7 @@ const renderProducts = function (products) {
     console.log(products);
     products.forEach(product => {
         homeEl.innerHTML += `
-        <div class="information">
+        <div class="home">
         <h3>${product.name}</h3>
         <h4>Price: ${formatPrice(product.price)}</h4>
         <h5>Description: ${formatDescription(product.itemdetails)}</h5>
