@@ -30,19 +30,21 @@ function submitItem(data) {
     })
       .then((res) => res.json())
       .then((product) => {
-        homeEl.innerHTML += renderProducts(products);
+        renderProducts([product]);
       });
   };
 
 function bindItemFormEventListener(){
-    productForm.addEventListener("submit", function (p) {
-        p.preventDefault();
-        
-        submitItem(formData);
-        
+    productForm.addEventListener("submit", function (eve) {
+        eve.preventDefault();
+        const formData = new FormData(eve.target);
+        const data = Object.fromEntries(formData.entries());
+        submitItem(data);
     }
     )}; 
 bindItemFormEventListener()
+
+
  
 const renderProducts = function (products) {
     console.log(products);
