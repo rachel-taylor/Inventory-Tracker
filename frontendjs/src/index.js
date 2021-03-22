@@ -1,11 +1,12 @@
-const BASE_URL = "http://localhost:3000"
-const homeEl = document.getElementById('home')
+const homeurl = "http://localhost:3000";
+const homeEl = document.getElementById('home');
+const productForm = document.getElementById('productForm');
 
 function refreshProducts(){
     homeEl.innerHTML = "<h3>Refreshing</h3>";
-fetch("http://localhost:3000/products")
-    .then((res) => res.json()) 
-    .then((data) => renderProducts(data));
+    fetch("http://localhost:3000/products")
+        .then((res) => res.json()) 
+        .then((data) => renderProducts(data));
 };
 refreshProducts()
 
@@ -22,22 +23,26 @@ function formatDepartment(department_name){
 function submitItem(data) {
     fetch(`http://localhost:3000/products`, {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
     })
       .then((res) => res.json())
       .then((product) => {
-        const newProduct = new Product(product);
-        Products.innerHTML += newProduct.renderProducts();
+        homeEl.innerHTML += renderProducts(products);
       });
   };
 
 function bindItemFormEventListener(){
     productForm.addEventListener("submit", function (p) {
         p.preventDefault();
-        var formData = new FormData(p.target);
+        
         submitItem(formData);
-        console.log(formData);
+        
     }
     )}; 
+bindItemFormEventListener()
  
 const renderProducts = function (products) {
     console.log(products);
