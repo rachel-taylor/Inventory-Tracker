@@ -3,12 +3,18 @@ const homeEl = document.getElementById('home');
 const productForm = document.getElementById('productForm');
 
 function refreshProducts(){
-    homeEl.innerHTML = "<h3>Refreshing</h3>";
+    homeEl.innerHTML = "<h3 id='mess1'>Refreshing</h3>";
     fetch("http://localhost:3000/products")
         .then((res) => res.json()) 
         .then((data) => renderProducts(data));
+        // .then(innerHTML) => ()
 };
 refreshProducts()
+
+$("#mess1").empty();
+
+// var updating = document.getElementById("mess1");
+// updating.innerHTML = ""
 
 function formatPrice(price){
     return `$${price}`;
@@ -19,6 +25,29 @@ function formatDescription(itemdetails){
 function formatDepartment(department_name){
     return `${department_name}`
 };
+
+// function deleteProduct(d){
+//     const {id} = d.target.dataset
+//     fetch(`http://localhost:3000/product/${parseInt(id)}`,
+//     method: "DELETE",    
+//     })
+//     .then(res => res.json())
+//     .then( data => {
+//         d.target.parentElement.remove()
+//     })
+// };
+
+// (document.querySelectorAll('.delete-btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
+//     function deleteComment(e) {
+//         const id = e.target.dataset.id;
+//         fetch(`http://localhost:3000/comments/${id}`, {
+//             method: "DELETE",
+//             })
+//             .then((res) => res.json())
+//             .then((data) => {
+//             e.target.parentElement.remove()
+//             });
+//           }
 
 function submitItem(data) {
     fetch(`http://localhost:3000/products`, {

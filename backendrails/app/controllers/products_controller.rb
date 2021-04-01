@@ -9,7 +9,6 @@ class ProductsController < ApplicationController
         render json: product
     end 
 
-
     def create 
         # byebug 
         new_product_params = product_params
@@ -20,15 +19,26 @@ class ProductsController < ApplicationController
         # byebug 
         product = Product.new(new_product_params)
         if product.save!
-            
             render json: product 
         else
         #     # format.json  {
         #     #     render json: => product.errors
         #     # }
-            render text: "This is clearly an error :D"
+            puts "This is clearly an error :D"
         end 
-        
+    end 
+    def delete 
+        product = Product.find(params[:id])
+        product.destroy
+        if product.delete 
+            render json: product 
+        else 
+            render text: "You've hit an error"
+        end 
+    end 
+
+    def edit 
+
     end
 
     private 
