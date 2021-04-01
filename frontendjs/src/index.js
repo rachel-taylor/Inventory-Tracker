@@ -2,6 +2,7 @@ const homeurl = "http://localhost:3000";
 const homeEl = document.getElementById('home');
 const productForm = document.getElementById('productForm');
 
+
 function refreshProducts(){
     homeEl.innerHTML = "<h3 id='mess1'>Refreshing</h3>";
     fetch("http://localhost:3000/products")
@@ -37,17 +38,18 @@ function formatDepartment(department_name){
 //     })
 // };
 
-// (document.querySelectorAll('.delete-btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
-//     function deleteComment(e) {
-//         const id = e.target.dataset.id;
-//         fetch(`http://localhost:3000/comments/${id}`, {
-//             method: "DELETE",
-//             })
-//             .then((res) => res.json())
-//             .then((data) => {
-//             e.target.parentElement.remove()
-//             });
-//           }
+(document.querySelectorAll('.delete-btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
+    
+function deleteComment(e) {
+    const id = e.target.dataset.id;
+    fetch(`http://localhost:3000/products/${id}`, {
+        method: "DELETE",
+        })
+        .then((res) => res.json())
+            .then((data) => {
+            e.target.parentElement.remove()
+            });
+          }
 
 function submitItem(data) {
     fetch(`http://localhost:3000/products`, {
@@ -74,9 +76,11 @@ function bindItemFormEventListener(){
 bindItemFormEventListener()
 
 
+
+
  
-const renderProducts = function (products) {
-    console.log(products);
+function renderProducts(products) {
+    // console.log(products);
     products.forEach(product => {
         homeEl.innerHTML += `
         <div id="home">    

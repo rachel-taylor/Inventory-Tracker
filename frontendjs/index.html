@@ -19,41 +19,48 @@
   </div>
 
 <!-- New product form  -->
-<div id="productsform">
-  <form id="productForm">
-    <div class="row">
-      <div class="col s6">
-        <h3>Product</h3>
-          <input name="name" id='product_name' placeholder="Wake It Up">
-      </div>
-    </div>
-</div>   
 <div class="row">
-  <div class="col s6">
-    <h3>Department</h3>
-      <input type="text" name="department_id" id='department_name' placeholder="Grocery">
-  </div>  
+  <div class="col s4">
+    <div id="productsform">
+      <form id="productForm">
+        <!-- <div class="row" class="col s4"> -->
+          <!-- <div class="col s4"> -->
+            <h6>Product</h6>
+              <input name="name" id='product_name' placeholder="Wake It Up">
+          <!-- </div>
+        </div>
+    </div>    -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col s4"> -->
+        <h6>Department</h6>
+          <input type="text" name="department_id" id='department_name' placeholder="Grocery">
+      <!-- </div>  
+    </div> -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col s4"> -->
+        <h6>Product Details</h6>
+          <input type="text" name="itemdetails" id='itemdetails' placeholder="When you were only able to get a few hours of sleep">
+      <!-- </div>
+    </div>    -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col s4"> -->
+        <h6>Price</h6>
+          <input type="integer" name="price" id='price' placeholder="3">
+      <!-- </div>
+    </div>   -->
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add
+    </button>
+        </form>
+      <!-- </div> -->
+  </div>
 </div>
-<div class="row">
-  <div class="col s6">
-    <h3>Product Details</h3>
-      <input type="text" name="itemdetails" id='itemdetails' placeholder="When you were only able to get a few hours of sleep">
-  </div>
-</div>   
-<div class="row">
-  <div class="col s6">
-    <h3>Price</h3>
-      <input type="integer" name="price" id='price' placeholder="3">
-  </div>
-</div>  
-<button class="btn waves-effect waves-light" type="submit" name="action">Add
-</button>
-    </form>
-  </div>
-
 <!-- Test Code  -->
 
+<div class="col s8">
 
+
+
+</div>
 
 
 
@@ -61,10 +68,12 @@
 
 
 <!-- seed data  -->
-  <div id="home" class="card-panel" class="col s6" class="divider">
+  <div id="home" class="col s8">
+  <button class="btn delete-btn" type="delete" name="action">Delete
+  </button>
   </div>
 
-
+<script src='lib/jquery.min.js'></script>
 <script src="src/index.js"></script> 
 </body>
 </html>

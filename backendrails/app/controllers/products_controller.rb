@@ -5,7 +5,9 @@ class ProductsController < ApplicationController
     end 
 
     def show 
+        # byebug
         product = Product.find(params[:id])
+
         render json: product
     end 
 
@@ -13,11 +15,11 @@ class ProductsController < ApplicationController
         # byebug 
         new_product_params = product_params
         department = Department.find_by(name: new_product_params["department_id"])
-        # new_product_params.delete :department
         #  byebug
         new_product_params["department_id"] = department.id
         # byebug 
         product = Product.new(new_product_params)
+        #  byebug
         if product.save!
             render json: product 
         else
