@@ -88,10 +88,16 @@ FLIPPING
     - I suggest passing in an argument that is the CSS selector for the card, for instance, "#card-id" (remember # precedes ids in CSS selectors.)
     - Then you can use the jquery technique to get the element: $(selector)
         - this is the same as doing document.querySelector(selector), just shorter
-    - Change the class, or whatever 
+    - Change the class, or whatever, to trigger the transition
 - Event listener for click, on the card (both front and back)
     - In the event listener, call the flipCard() function
+
+OR
+https://www.ostraining.com/blog/coding/jquery-flip/
 */
+
+
+
 
  
 function renderProducts(products) {
@@ -100,13 +106,13 @@ function renderProducts(products) {
         homeEl.innerHTML += `
         <div class="card blue darken-1>
             <div class="card-content white-text">
+            <div class="card-action">
                 <h3>${product.name}</h3>
                 <h4>Price: ${formatPrice(product.price)}</h4>
                 <h5>Description: ${formatDescription(product.itemdetails)}</h5>
                 <h5>Department: ${formatDepartment(product.department_name)}</h5>
             </div>
-            <div class="card-action">
-            <a class="waves-effect waves-teal btn-flat">Button</a>
+            <a class="waves-effect waves-teal btn-flat">Delete</a>
             </div>
         </div>
         `
