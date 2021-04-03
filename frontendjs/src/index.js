@@ -94,21 +94,6 @@ function renderProducts(products) {
 };
 
 
-// Dropdown 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(elems, options);
-  });
-
-// Parallax 
-// document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.parallax');
-//     var instances = M.Parallax.init(elems, options);
-//   });
-
-// $(document).ready(function(){
-//     $('.parallax').parallax();
-//   });
 
 
 
