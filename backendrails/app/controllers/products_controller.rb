@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
         #     # format.json  {
         #     #     render json: => product.errors
         #     # }
-            puts "This is clearly an error :D"
+            render text: "This is clearly an error :D"
         end 
     end 
     def delete 
@@ -35,7 +35,7 @@ class ProductsController < ApplicationController
         if product.delete 
             render json: product 
         else 
-            render text: "You've hit an error"
+            flash text: "You've hit an error"
         end 
     end 
 

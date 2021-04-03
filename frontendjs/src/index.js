@@ -12,10 +12,8 @@ function refreshProducts(){
 };
 refreshProducts()
 
-$("#mess1").empty();
+// $("#mess1").empty();
 
-// var updating = document.getElementById("mess1");
-// updating.innerHTML = ""
 
 function formatPrice(price){
     return `$${price}`;
@@ -38,18 +36,19 @@ function formatDepartment(department_name){
 //     })
 // };
 
-(document.querySelectorAll('btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
+//  (document.querySelectorAll('btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
     
-function deleteComment(e) {
-    const id = e.target.dataset.id;
-    fetch(`http://localhost:3000/products/${id}`, {
-        method: "DELETE",
-        })
-        .then((res) => res.json())
-            .then((data) => {
-            e.target.parentElement.remove()
-            });
-          }
+// function deleteProduct(e) {
+//     const id = e.target.dataset.id;
+//     fetch(`http://localhost:3000/products/${id}`, {
+//         method: "DELETE",
+//         })
+//         .then((res) => res.json())
+//             .then((data) => {
+//             e.target.parentElement.remove()
+//             });
+//           }
+      
 
 function submitItem(data) {
     fetch(`http://localhost:3000/products`, {
@@ -77,6 +76,47 @@ bindItemFormEventListener()
 
 document.getElementById("productForm").reset();
 
+function renderProducts(products) {
+    // console.log(products);
+    products.forEach(product => {
+        homeEl.innerHTML += `
+        <div class="card teal darken-4>
+            <div class="card-action">
+                <h3>${product.name}</h3>
+                <h4>Price: ${formatPrice(product.price)}</h4>
+                <h5>Description: ${formatDescription(product.itemdetails)}</h5>
+                <h5>Department: ${formatDepartment(product.department_name)}</h5>
+                <a class="waves-effect waves-teal btn-flat">Delete</a>
+            </div>
+        </div>
+        `
+    });
+};
+
+
+// Dropdown 
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(elems, options);
+  });
+
+// Parallax 
+// document.addEventListener('DOMContentLoaded', function() {
+//     var elems = document.querySelectorAll('.parallax');
+//     var instances = M.Parallax.init(elems, options);
+//   });
+
+// $(document).ready(function(){
+//     $('.parallax').parallax();
+//   });
+
+
+
+
+
+
+
+
 /*
 FLIPPING 
 - Design the card "front" vs the card "back"
@@ -95,27 +135,3 @@ FLIPPING
 OR
 https://www.ostraining.com/blog/coding/jquery-flip/
 */
-
-
-
-
- 
-function renderProducts(products) {
-    // console.log(products);
-    products.forEach(product => {
-        homeEl.innerHTML += `
-        <div class="card blue darken-1>
-            <div class="card-content white-text">
-            <div class="card-action">
-                <h3>${product.name}</h3>
-                <h4>Price: ${formatPrice(product.price)}</h4>
-                <h5>Description: ${formatDescription(product.itemdetails)}</h5>
-                <h5>Department: ${formatDepartment(product.department_name)}</h5>
-            </div>
-            <a class="waves-effect waves-teal btn-flat">Delete</a>
-            </div>
-        </div>
-        `
-    });
-};
-
