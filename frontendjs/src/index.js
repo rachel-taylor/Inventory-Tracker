@@ -36,7 +36,7 @@ function formatDepartment(department_name){
 //     })
 // };
 
-//  (document.querySelectorAll('btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
+(document.querySelectorAll('btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
     
 // function deleteProduct(e) {
 //     const id = e.target.dataset.id;
@@ -48,7 +48,19 @@ function formatDepartment(department_name){
 //             e.target.parentElement.remove()
 //             });
 //           }
-      
+
+function deleteProduct(data) {
+    const { id } = data.target.dataset;
+    fetch(`http://localhost:3000/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        e.target.parentElement.parentElement.parentElement.remove();
+      });
+  }
+
+
 
 function submitItem(data) {
     fetch(`http://localhost:3000/products`, {
@@ -61,6 +73,7 @@ function submitItem(data) {
       .then((res) => res.json())
       .then((product) => {
         renderProducts([product]);
+        location.reload ();
       });
   };
 
@@ -90,7 +103,8 @@ function renderProducts(products) {
             </div>
         </div>
         `
-    });
+    });        
+
 };
 
 
