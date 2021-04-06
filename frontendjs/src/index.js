@@ -4,15 +4,11 @@ const productForm = document.getElementById('productForm');
 
 
 function refreshProducts(){
-    // homeEl.innerHTML = "<h3 id='mess1'>Refreshing</h3>";
     fetch("http://localhost:3000/products")
         .then((res) => res.json()) 
         .then((data) => renderProducts(data));
-        // .then(innerHTML) => ()
 };
 refreshProducts()
-
-// $("#mess1").empty();
 
 
 function formatPrice(price){
@@ -36,7 +32,7 @@ function formatDepartment(department_name){
 //     })
 // };
 
-(document.querySelectorAll('btn')).forEach(delBtn => delBtn.addEventListener('click', deleteComment))
+(document.querySelectorAll('btn')).forEach(Btn => Btn.addEventListener('click', deleteProduct));
     
 // function deleteProduct(e) {
 //     const id = e.target.dataset.id;
@@ -90,20 +86,24 @@ bindItemFormEventListener()
 document.getElementById("productForm").reset();
 
 function renderProducts(products) {
-    // console.log(products);
     products.forEach(product => {
         homeEl.innerHTML += `
-        <div class="card teal darken-4>
+        <div class="card black">
+        <div class="card-content white-text">
             <div class="card-action">
                 <h3>${product.name}</h3>
                 <h4>Price: ${formatPrice(product.price)}</h4>
                 <h5>Description: ${formatDescription(product.itemdetails)}</h5>
                 <h5>Department: ${formatDepartment(product.department_name)}</h5>
+                
                 <a class="waves-effect waves-teal btn-flat">Delete</a>
             </div>
+        </div>    
         </div>
         `
-    });        
+    });   
+    
+    
 
 };
 

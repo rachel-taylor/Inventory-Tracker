@@ -29,15 +29,22 @@ class ProductsController < ApplicationController
             render text: "This is clearly an error :D"
         end 
     end 
-    def delete 
+    # def delete 
+    #     product = Product.find(params[:id])
+    #     product.destroy
+    #     if product.delete 
+    #         render json: product 
+    #     else 
+    #         flash text: "You've hit an error"
+    #     end 
+    # end 
+
+    def destroy
         product = Product.find(params[:id])
-        product.destroy
-        if product.delete 
-            render json: product 
-        else 
-            flash text: "You've hit an error"
-        end 
-    end 
+        if product.destroy
+          render json: { id: product.id }
+        end
+      end
 
     def edit 
 
