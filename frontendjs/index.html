@@ -6,37 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css" media="screen"/>
     
 </head>
 <body>
   <!-- NavBar Design -->
   <div id="navbar">
-    <nav class="bg purple darken-5">
-      <a href="#" class="border-transparent ">New Product</a> ||
-      <a href="#" class="border-transparent ">New Department</a>
+    <nav class="bg black">
+      <div class="brand-logo center">Inventory Tracker</a>
+      <!-- <a href="#" class="border-transparent ">New Product</a> ||
+      <a href="#" class="border-transparent ">New Department</a> -->
      </nav>
-  </div>
+
+</div>
+
+
 
 <!-- New product form  -->
-  <div id="products">
-    <form id="productForm">
-      <h3>Product</h3>
-      <input type="text" name="name" id='product_name' placeholder="Wake It Up">
-      <h3>Department</h3>
-      <input type="text" name="department_id" id='department_name' placeholder="Grocery">
-      <h3>Product Details</h3>
-      <input type="text" name="itemdetails" id='itemdetails' placeholder="When you were only able to get a few hours of sleep">
-      <h3>Price</h3>
-      <input type="integer" name="price" id='price' placeholder="$3">
-      <button type="submit">Save</button>
-    </form>
+<div class="row">
+  <div class="col s4">
+    <!-- <div class="card horizontal cyan darken-4"> -->
+      <div class="card-panel white blue-text">
+    <div id="productsform">
+      <form id="productForm">
+        <!-- <div class="row" class="col s4"> -->
+          <!-- <div class="col s4"> -->
+            <h6>Product</h6>
+              <input name="name" id='product_name' placeholder="Moonshine Madness">
+          <!-- </div>
+        </div>
+    </div>    -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col s4"> -->
+        <h6>Department</h6>
+          <input type="text" name="department_id" id='department_name' placeholder="Grocery">
+      <!-- </div>  
+    </div> -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col s4"> -->
+        <h6>Product Details</h6>
+          <input type="text" name="itemdetails" id='itemdetails' placeholder="When you were only able to get a few hours of sleep">
+      <!-- </div>
+    </div>    -->
+    <!-- <div class="row"> -->
+      <!-- <div class="col s4"> -->
+        <h6>Price</h6>
+          <input type="integer" name="price" id='price' placeholder="3">
+      <!-- </div>
+    </div>   -->
+    <button class="btn waves-effect waves-light" type="submit" name="action">Add
+    </button>
+        </form>
+      <!-- </div> -->
+    <!-- </div> -->
   </div>
+</div>
+</div>
+<!-- Test Code  -->
+<!-- 
+<div class="col s8">
+
+
+
+</div> -->
 
 <!-- seed data  -->
-  <div id="home">
+  <div id="home" class="col s8 m6">
+  <!-- <button class="btn delete-btn" type="delete" name="action">Delete
+  </button> -->
   </div>
 
-
+<script src='lib/jquery.min.js'></script>
 <script src="src/index.js"></script> 
+
 </body>
 </html>
