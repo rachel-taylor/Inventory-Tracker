@@ -11,15 +11,15 @@ function refreshProducts(){
 refreshProducts()
 
 
-function formatPrice(price){
-    return `$${price}`;
-};
-function formatDescription(itemdetails){
-    return `${itemdetails}`
-};
-function formatDepartment(department_name){
-    return `${department_name}`
-};
+// function formatPrice(price){
+//     return `$${price}`;
+// };
+// function formatDescription(itemdetails){
+//     return `${itemdetails}`
+// };
+// function formatDepartment(department_name){
+//     return `${department_name}`
+// };
 
 // function deleteProduct(d){
 //     const {id} = d.target.dataset
