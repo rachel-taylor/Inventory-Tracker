@@ -34,32 +34,30 @@ function formatDepartment(department_name){
 
 
     
-function deleteProduct(e) {
-    const buttonId = e.target.id; // delete-button-ProductName
-    const name = buttonId.replace("delete-button-", "");
-    console.log("Name is:", name);
-    // TODO: send the name in somehow
-    fetch(`http://localhost:3000/products`, {
-        method: "DELETE",
-        })
-        .then((res) => res.json())
-            .then((data) => {
-            e.target.parentElement.remove()
-            });
-          }
+// function deleteProduct(e) {
+//     const buttonId = e.target.id; // delete-button-ProductName
+//     const name = buttonId.replace("delete-button-", "");
+//     console.log("Name is:", name);
+//     // TODO: send the name in somehow
+//     fetch(`http://localhost:3000/products`, {
+//         method: "DELETE",
+//         })
+//         .then((res) => res.json())
+//             .then((data) => {
+//             e.target.parentElement.remove()
+//             });
+//           }
 
-// function deleteProduct(data) {
-//     const { id } = data.target.dataset;
-//     fetch(`http://localhost:3000/products/${id}`, {
-//       method: "DELETE",
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         e.target.parentElement.parentElement.parentElement.remove();
-//       });
-//   }
-
-
+function deleteProduct(data) {
+    const { id } = data.target.dataset;
+    fetch(`http://localhost:3000/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        e.target.parentElement.parentElement.parentElement.remove();
+      });
+  }
 
 function submitItem(data) {
     fetch(`http://localhost:3000/products`, {
@@ -82,7 +80,7 @@ function bindProductFormEventListener(){
         eve.preventDefault();
         const formData = new FormData(eve.target);
         const data = Object.fromEntries(formData.entries());
-        submitProduct(data);
+        submitItem(data);
     }
     )}; 
 bindProductFormEventListener()
@@ -109,36 +107,8 @@ function renderProducts(products) {
         </div>    
         </div>
         `
+   
     });   
     
-    (document.querySelectorAll(`.btn-delete`)).forEach(Btn => Btn.addEventListener('click', deleteProduct));
-    
-};
-
-
-
-
-
-
-
-
-
-
-/*
-FLIPPING 
-- Design the card "front" vs the card "back"
-- Create a CSS transition to flip the card
-    - see this https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
-    - I also suggest using the CSS transform property: https://developer.mozilla.org/en-US/docs/Web/CSS/transform
-    - you will probably have to work on this a little bit - it might not be straightforward
-- Write a flipCard function
-    - I suggest passing in an argument that is the CSS selector for the card, for instance, "#card-id" (remember # precedes ids in CSS selectors.)
-    - Then you can use the jquery technique to get the element: $(selector)
-        - this is the same as doing document.querySelector(selector), just shorter
-    - Change the class, or whatever, to trigger the transition
-- Event listener for click, on the card (both front and back)
-    - In the event listener, call the flipCard() function
-
-OR
-https://www.ostraining.com/blog/coding/jquery-flip/
-*/
+    // (document.querySelectorAll(`.btn-delete`)).forEach(Btn => Btn.addEventListener('click', deleteProduct))
+  }

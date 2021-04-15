@@ -5,46 +5,35 @@ class ProductsController < ApplicationController
     end 
 
     def show 
-        # byebug
+      
         product = Product.find(params[:id])
 
         render json: product
     end 
 
     def create 
-        # byebug 
+       
         new_product_params = product_params
         department = Department.find_by(name: new_product_params["department_id"])
-        #  byebug
         new_product_params["department_id"] = department.id
         # byebug 
         product = Product.new(new_product_params)
-        #  byebug
         if product.save!
             render json: product 
         else
-        #     # format.json  {
-        #     #     render json: => product.errors
-        #     # }
-            render text: "This is clearly an error :D"
+            render text: "Product Not Saved"
         end 
     end 
+
     def delete 
         product = Product.find(params[:id])
         product.destroy
         if product.delete 
             render json: product 
         else 
-            flash text: "You've hit an error"
+            flash text: "Product Not Deleted"
         end 
     end 
-
-    # def destroy
-    #     product = Product.find(params[:id])
-    #     if product.destroy
-    #       render json: { id: product.id }
-    #     end
-    #   end
 
     def edit 
 
