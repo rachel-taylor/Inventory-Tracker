@@ -10,7 +10,7 @@ function refreshProducts(){
 };
 refreshProducts()
 
-
+// Price - Description - Item Details
 // function formatPrice(price){
 //     return `$${price}`;
 // };
@@ -107,8 +107,8 @@ function renderProducts(products) {
         </div>    
         </div>
         `
-   
     });   
     
-    // (document.querySelectorAll(`.btn-delete`)).forEach(Btn => Btn.addEventListener('click', deleteProduct))
-  }
+    (document.querySelectorAll(`.btn-delete`)).forEach(Btn => Btn.addEventListener('click', deleteProduct));
+    
+};

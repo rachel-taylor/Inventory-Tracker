@@ -1,9 +1,10 @@
 class Product {
-    constructor({id, name, description, price}) {
-      this.id = Product.id;
-      this.name = Product.name;
-      this.description = Product.description;
-      this.price = Product.price;
+    //  initialize where product properties listed
+    constructor() {
+      this.id = this.id;
+      this.name = this.name;
+      this.description = this.description;
+      this.price = this.price;
     }
 
     formatPrice(price){
