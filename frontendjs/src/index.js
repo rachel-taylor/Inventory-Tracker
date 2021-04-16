@@ -1,15 +1,20 @@
-const homeurl = "http://localhost:3000";
-const homeEl = document.getElementById('home');
+// const homeurl = "http://localhost:3000";
+// const homeEl = document.getElementById('home');
+import Product from './product.js';
 const productForm = document.getElementById('productForm');
 
 
-// function refreshProducts(){
-//   debugger 
-//     fetch("http://localhost:3000/products")
-//         .then((res) => res.json()) 
-//         .then((data) => Product);
-// };
-// refreshProducts()
+function refreshProducts(){
+  fetch("http://localhost:3000/products")
+      .then((res) => res.json()) 
+      .then((products) => {
+          products.forEach(p => {
+              const prod = new Product(p);
+              prod.renderProd();
+          });
+      });
+}
+refreshProducts();
 
 // Price - Description - Item Details
 // function formatPrice(price){
@@ -22,23 +27,6 @@ const productForm = document.getElementById('productForm');
 //     return `${department_name}`
 // };
 
-
-
-    
-// function deleteProduct(e) {
-//     const buttonId = e.target.id; // delete-button-ProductName
-//     const name = buttonId.replace("delete-button-", "");
-//     console.log("Name is:", name);
-//     // TODO: send the name in somehow
-//     fetch(`http://localhost:3000/products`, {
-//         method: "DELETE",
-//         })
-//         .then((res) => res.json())
-//             .then((data) => {
-//             e.target.parentElement.remove()
-//             });
-//           }
-
 function deleteProduct(data) {
     const {id} = data.target.dataset;
     fetch(`http://localhost:3000/products/${id}`, {
@@ -50,7 +38,7 @@ function deleteProduct(data) {
       });
   }
 
-function submitItem(data) {
+function submitItem(data){
     fetch(`http://localhost:3000/products`, {
       method: "POST",
       headers: {
@@ -60,23 +48,21 @@ function submitItem(data) {
     })
       .then((res) => res.json())
       .then((product) => {
-        document.getElementById("productForm").reset();
-        new Product ([this.product]);
-        // inner html
+        productForm.reset();
+        const prod = new Product(product);
+        prod.renderProd();
       });
   };
 
-function bindProductFormEventListener(){
+  function bindProductFormEventListener(){
     productForm.addEventListener("submit", function (eve) {
-        eve.preventDefault();
-        const formData = new FormData(eve.target);
-        const data = Object.fromEntries(formData.entries());
-        submitItem(data);
+      eve.preventDefault();
+      const formData = new FormData(eve.target);
+      const data = Object.fromEntries(formData.entries());
+      submitItem(data);
     }
-    )}; 
-bindProductFormEventListener()
-
-document.getElementById("productForm").reset();
+  )};
+  bindProductFormEventListener();
 
 // function renderProducts(products) {
 //     products.forEach(product => {
