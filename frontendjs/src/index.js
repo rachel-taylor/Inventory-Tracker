@@ -90,10 +90,7 @@ document.getElementById("productForm").reset();
 
 function renderProducts(products) {
     products.forEach(product => {
-        // const div1 = document.createElement("div")
-        // div1.className = "card black"
-        // homeEl.appendElement(div1)
-        // outerElement.appendElement(innerElement)
+     
         const productObject = new Product(product)
         // console.log(productObject)
         homeEl.innerHTML += `
@@ -103,7 +100,7 @@ function renderProducts(products) {
                 <h3>${productObject.name}</h3>
                 <h4>Price: ${productObject.formatPrice()}</h4>
                 <h5>Description: ${productObject.itemdetails}</h5>
-                <h5>Department: ${productObject.department_name)}</h5>
+                <h5>Department: ${productObject.department_name}</h5>
                 <a id="delete-button-${productObject.name}" class="waves-effect waves-teal btn-flat btn-delete">Delete</a>
             </div>
         </div>    
