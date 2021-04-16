@@ -49,7 +49,7 @@ refreshProducts()
 //           }
 
 function deleteProduct(data) {
-    const { id } = data.target.dataset;
+    const {id} = data.target.dataset;
     fetch(`http://localhost:3000/products/${id}`, {
       method: "DELETE",
     })
@@ -70,7 +70,8 @@ function submitItem(data) {
       .then((res) => res.json())
       .then((product) => {
         document.getElementById("productForm").reset();
-        renderProducts([product]);
+        new Product ([this.product]);
+        // inner html
         // location.reload ();
       });
   };
@@ -93,16 +94,17 @@ function renderProducts(products) {
         // div1.className = "card black"
         // homeEl.appendElement(div1)
         // outerElement.appendElement(innerElement)
-        
+        const productObject = new Product(product)
+        // console.log(productObject)
         homeEl.innerHTML += `
         <div class="card black">
         <div class="card-content white-text">
             <div class="card-action">
-                <h3>${product.name}</h3>
-                <h4>Price: ${formatPrice(product.price)}</h4>
-                <h5>Description: ${formatDescription(product.itemdetails)}</h5>
-                <h5>Department: ${formatDepartment(product.department_name)}</h5>
-                <a id="delete-button-${product.name}" class="waves-effect waves-teal btn-flat btn-delete">Delete</a>
+                <h3>${productObject.name}</h3>
+                <h4>Price: ${productObject.formatPrice()}</h4>
+                <h5>Description: ${productObject.itemdetails}</h5>
+                <h5>Department: ${productObject.department_name)}</h5>
+                <a id="delete-button-${productObject.name}" class="waves-effect waves-teal btn-flat btn-delete">Delete</a>
             </div>
         </div>    
         </div>

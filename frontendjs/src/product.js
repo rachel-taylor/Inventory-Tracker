@@ -1,14 +1,16 @@
 class Product {
     //  initialize where product properties listed
-    constructor() {
-      this.id = this.id;
-      this.name = this.name;
-      this.description = this.description;
-      this.price = this.price;
+    constructor(attributes) {
+    // console.log(attributes)
+      this.id = attributes.id;
+      this.name = attributes.name;
+      this.itemdetails = attributes.itemdetails;
+      this.price = attributes.price;
+      this.department_name = attributes.department_name;
     }
 
-    formatPrice(price){
-        return `$${price}`;
+    formatPrice(){
+        return `$${this.price}`;
     };
     formatDescription(itemdetails){
         return `${itemdetails}`
