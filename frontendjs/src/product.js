@@ -22,7 +22,6 @@ class Product {
     };
 
     renderProd(){
-        
         products.forEach(product => {
             const productObject = new Product(this)
             

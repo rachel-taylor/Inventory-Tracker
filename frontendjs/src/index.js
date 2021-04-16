@@ -3,12 +3,13 @@ const homeEl = document.getElementById('home');
 const productForm = document.getElementById('productForm');
 
 
-function refreshProducts(){
-    fetch("http://localhost:3000/products")
-        .then((res) => res.json()) 
-        .then((data) => new Product());
-};
-refreshProducts()
+// function refreshProducts(){
+//   debugger 
+//     fetch("http://localhost:3000/products")
+//         .then((res) => res.json()) 
+//         .then((data) => Product);
+// };
+// refreshProducts()
 
 // Price - Description - Item Details
 // function formatPrice(price){
@@ -62,7 +63,6 @@ function submitItem(data) {
         document.getElementById("productForm").reset();
         new Product ([this.product]);
         // inner html
-        // location.reload ();
       });
   };
 
