@@ -6,7 +6,7 @@ const productForm = document.getElementById('productForm');
 function refreshProducts(){
     fetch("http://localhost:3000/products")
         .then((res) => res.json()) 
-        .then((data) => renderProducts(data));
+        .then((data) => new Product());
 };
 refreshProducts()
 
@@ -21,16 +21,6 @@ refreshProducts()
 //     return `${department_name}`
 // };
 
-// function deleteProduct(d){
-//     const {id} = d.target.dataset
-//     fetch(`http://localhost:3000/product/${parseInt(id)}`,
-//     method: "DELETE",    
-//     })
-//     .then(res => res.json())
-//     .then( data => {
-//         d.target.parentElement.remove()
-//     })
-// };
 
 
     
@@ -55,7 +45,7 @@ function deleteProduct(data) {
     })
       .then((res) => res.json())
       .then((data) => {
-        e.target.parentElement.parentElement.parentElement.remove();
+        data.target.parentElement.parentElement.parentElement.remove();
       });
   }
 
@@ -88,26 +78,26 @@ bindProductFormEventListener()
 
 document.getElementById("productForm").reset();
 
-function renderProducts(products) {
-    products.forEach(product => {
+// function renderProducts(products) {
+//     products.forEach(product => {
      
-        const productObject = new Product(product)
-        // console.log(productObject)
-        homeEl.innerHTML += `
-        <div class="card black">
-        <div class="card-content white-text">
-            <div class="card-action">
-                <h3>${productObject.name}</h3>
-                <h4>Price: ${productObject.formatPrice()}</h4>
-                <h5>Description: ${productObject.itemdetails}</h5>
-                <h5>Department: ${productObject.department_name}</h5>
-                <a id="delete-button-${productObject.name}" class="waves-effect waves-teal btn-flat btn-delete">Delete</a>
-            </div>
-        </div>    
-        </div>
-        `
-    });   
+//         const productObject = new Product(product)
+//         // console.log(productObject)
+//         homeEl.innerHTML += `
+//         <div class="card black">
+//         <div class="card-content white-text">
+//             <div class="card-action">
+//                 <h3>${productObject.name}</h3>
+//                 <h4>Price: ${productObject.formatPrice()}</h4>
+//                 <h5>Description: ${productObject.itemdetails}</h5>
+//                 <h5>Department: ${productObject.department_name}</h5>
+//                 <a id="delete-button-${productObject.name}" class="waves-effect waves-teal btn-flat btn-delete">Delete</a>
+//             </div>
+//         </div>    
+//         </div>
+//         `
+//     });   
     
-    (document.querySelectorAll(`.btn-delete`)).forEach(Btn => Btn.addEventListener('click', deleteProduct));
+//     (document.querySelectorAll(`.btn-delete`)).forEach(Btn => Btn.addEventListener('click', deleteProduct));
     
-};
+// };
