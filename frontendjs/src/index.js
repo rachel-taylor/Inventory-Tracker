@@ -1,6 +1,6 @@
 // const homeurl = "http://localhost:3000";
-// const homeEl = document.getElementById('home');
-import Product from './product.js';
+const homeEl = document.getElementById('home');
+// import Product from './product.js';
 const productForm = document.getElementById('productForm');
 
 
@@ -11,6 +11,7 @@ function refreshProducts(){
           products.forEach(p => {
               const prod = new Product(p);
               prod.renderProd();
+              // debugger
           });
       });
 }

@@ -1,4 +1,4 @@
-export default class Product {
+class Product {
     //  initialize where product properties listed
     constructor(attributes) {
       this.id = attributes.id;
